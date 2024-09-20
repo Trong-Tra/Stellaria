@@ -5,14 +5,21 @@ using UnityEngine;
 
 public class Planet : MonoBehaviour
 {
+    public int id;
+    private GameManager game;
+    private bool hasCollided = false;
+    public Handler handler;
+    public bool isTouchingTrigger = false;
     void Start()
     {
-            
+        game = GameObject.Find("GameManager").GetComponent<GameManager>();
+        handler = GameObject.Find("Handler").GetComponent<Handler>();
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator DestroyPlanets(GameObject planet1, GameObject planet2)
     {
-        
+        yield return new WaitForSeconds(0.01f);
+        Destroy(planet1);
+        Destroy(planet2);
     }
 }
