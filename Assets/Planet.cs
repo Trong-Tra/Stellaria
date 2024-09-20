@@ -22,4 +22,13 @@ public class Planet : MonoBehaviour
         Destroy(planet1);
         Destroy(planet2);
     }
+
+    IEnumerator WaitForEndGame()
+    {
+        yield return new WaitForSeconds(5f);
+        if(isTouchingTrigger == true)
+        {
+            game.endGame();
+        }
+    }
 }
