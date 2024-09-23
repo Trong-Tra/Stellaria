@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.SearchService;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -9,6 +10,9 @@ public class GameManager : MonoBehaviour
     public GameObject[] planetPrefabs;
     public int score = 0;
     public TMP_Text scoreText;
+    public GameObject playAgainButton;
+    public GameObject scoreTextObj;
+    public bool gameOver = false;
 
     public void addScore(int id)
     {
@@ -49,5 +53,11 @@ public class GameManager : MonoBehaviour
                 break;
         }
         scoreText.text = "Score: " + score.ToString();
+    }
+
+    public void endGame()
+    {
+        gameOver = true;
+        playAgainButton.SetActive(true);
     }
 }
