@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Handler : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private GameManager gameManager;
+    public GameObject currentPlanet;
+    private bool hasPlanet = false;
+    
     void Start()
     {
-        
-    }
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        currentPlanet = gameManager.CreatePlanet(this.transform.position, 0);
+        currentPlanet.GetComponent<Rigidbody2D>().gravityScale = 0;
     }
 }

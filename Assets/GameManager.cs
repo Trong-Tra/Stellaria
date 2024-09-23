@@ -11,6 +11,13 @@ public class GameManager : MonoBehaviour
     public TMP_Text scoreText;
     public bool gameOver = false; 
 
+    public GameObject CreatePlanet(Vector3 position, int id)
+    {
+        GameObject combinedPlanet = Instantiate(planetPrefabs[id], position, Quaternion.identity);
+        combinedPlanet.GetComponent<Planet>().id = id;
+        return combinedPlanet;
+    }
+
     public void addScore(int id)
     {
         switch(id)
