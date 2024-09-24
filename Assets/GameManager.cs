@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,14 +10,16 @@ public class GameManager : MonoBehaviour
     public GameObject[] planetPrefabs;
     public int score = 0;
     public TMP_Text scoreText;
-    public bool gameOver = false; 
+    public GameObject playAgainButton;
+    public GameObject scoreTextObj;
+    public bool gameOver = false;
 
     public GameObject CreatePlanet(Vector3 position, int id)
     {
         GameObject combinedPlanet = Instantiate(planetPrefabs[id], position, Quaternion.identity);
         combinedPlanet.GetComponent<Planet>().id = id;
         return combinedPlanet;
-    }
+    } 
 
     public void addScore(int id)
     {
@@ -62,5 +65,12 @@ public class GameManager : MonoBehaviour
     public void endGame()
     {
         gameOver = true;
+        playAgainButton.SetActive(true);
+    }
+
+    public void playAgain()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 }
