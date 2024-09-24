@@ -9,6 +9,14 @@ public class GameManager : MonoBehaviour
     public GameObject[] planetPrefabs;
     public int score = 0;
     public TMP_Text scoreText;
+    public bool gameOver = false; 
+
+    public GameObject CreatePlanet(Vector3 position, int id)
+    {
+        GameObject combinedPlanet = Instantiate(planetPrefabs[id], position, Quaternion.identity);
+        combinedPlanet.GetComponent<Planet>().id = id;
+        return combinedPlanet;
+    }
 
     public void addScore(int id)
     {
@@ -49,5 +57,10 @@ public class GameManager : MonoBehaviour
                 break;
         }
         scoreText.text = "Score: " + score.ToString();
+    }
+
+    public void endGame()
+    {
+        gameOver = true;
     }
 }
