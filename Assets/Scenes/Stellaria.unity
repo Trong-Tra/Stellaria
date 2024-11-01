@@ -541,7 +541,7 @@ GameObject:
   m_Component:
   - component: {fileID: 611182247}
   m_Layer: 5
-  m_Name: Replay
+  m_Name: PlayAgain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -596,7 +596,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planetPrefab: {fileID: 0}
-  planetPrefabs: []
+  planetPrefabs:
+  - {fileID: 1531641346399689609, guid: 7f035057d4845a44e93a94a3896b5998, type: 3}
+  - {fileID: 6158195301891630879, guid: 1eb3b0e8d629b1d40adfe2bf30e3eafd, type: 3}
+  - {fileID: 6453393388681978304, guid: 1acf79131a47475478bc0791218fd6cf, type: 3}
+  - {fileID: 8985640855238492768, guid: ee6086e1e8dd7ea4eacac26599b34f39, type: 3}
+  - {fileID: 7621854872772924408, guid: add55cebbfb93314aa79dd5fb5e64602, type: 3}
+  - {fileID: 4576169845354371376, guid: 5ff136d30d2e8434dae7ea38217d938a, type: 3}
+  - {fileID: 7843008985536450112, guid: 16ea4a0398ee65c43ba017838172ba8b, type: 3}
+  - {fileID: 3440908061695438494, guid: 424e8bc1ec8d926419b9f7cefe5af0e9, type: 3}
+  - {fileID: 6881901250830241955, guid: 5e45742e994109646a99d36d7d9c9b82, type: 3}
+  - {fileID: 7727750254545642365, guid: c5be01534df337d408f7d666d76f87df, type: 3}
+  - {fileID: 1238010643026037453, guid: b0c2f23ff7e83f74587ee2c86032f027, type: 3}
   score: 0
   scoreText: {fileID: 0}
   playAgainButton: {fileID: 0}
@@ -831,63 +842,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &1062192188
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1531641346399689609, guid: 7f035057d4845a44e93a94a3896b5998, type: 3}
-      propertyPath: m_Name
-      value: Planet1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2832132963212968119, guid: 7f035057d4845a44e93a94a3896b5998, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2832132963212968119, guid: 7f035057d4845a44e93a94a3896b5998, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.90000004
-      objectReference: {fileID: 0}
-    - target: {fileID: 2832132963212968119, guid: 7f035057d4845a44e93a94a3896b5998, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2832132963212968119, guid: 7f035057d4845a44e93a94a3896b5998, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2832132963212968119, guid: 7f035057d4845a44e93a94a3896b5998, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2832132963212968119, guid: 7f035057d4845a44e93a94a3896b5998, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2832132963212968119, guid: 7f035057d4845a44e93a94a3896b5998, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2832132963212968119, guid: 7f035057d4845a44e93a94a3896b5998, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2832132963212968119, guid: 7f035057d4845a44e93a94a3896b5998, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2832132963212968119, guid: 7f035057d4845a44e93a94a3896b5998, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7f035057d4845a44e93a94a3896b5998, type: 3}
 --- !u!1 &1078456393
 GameObject:
   m_ObjectHideFlags: 0
@@ -1464,4 +1418,3 @@ SceneRoots:
   - {fileID: 49608707}
   - {fileID: 1897233975}
   - {fileID: 1756961657}
-  - {fileID: 1062192188}
