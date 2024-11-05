@@ -79,40 +79,69 @@ public class Handler : MonoBehaviour
     private void Update()
     {
         /**
-         * @dev this is temporary solution and var
-         * @todo design game and fix var
-         * @todo developing new handler logic
+         * @dev Update has been fixed to handle planet handler
+         * @todo Using try-catch to handle error for better readable
          */
         if (gameManager.gameOver) { return; }
 
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        if (mousePosition.x < 2f && mousePosition.x > -2f)
+        try
         {
-            mousePosition.z = 0;
-            mousePosition.y = transform.position.y;
-            transform.position = mousePosition;
-        }
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        if (currentPlanet != null)
-        {
+            // Fixed handler drop position
+            if (mousePosition.x < 2f && mousePosition.x > -2f)
+            {
+                mousePosition.z = 0;
+                mousePosition.y = transform.position.y;
+                transform.position = mousePosition;
+            }
+
+            // Update current planet position
+            if (currentPlanet == null)
+            {
+                throw new System.NullReferenceException("No active planet to update position");
+            }
+
             Rigidbody2D rb = currentPlanet.GetComponent<Rigidbody2D>();
-            if (rb != null && rb.gravityScale == 0)
+            if (rb == null)
+            {
+                throw new System.MissingComponentException("Rigidbody2D not found on current planet");
+            }
+
+            if (rb.gravityScale == 0)
             {
                 Vector3 newPosition = transform.position;
                 newPosition.y = spawnY;
                 currentPlanet.transform.position = newPosition;
             }
-        }
 
-        if (Input.GetMouseButtonDown(0) && currentPlanet != null)
-        {
-            Debug.Log("Releasing planet");
-            Rigidbody2D rb = currentPlanet.GetComponent<Rigidbody2D>();
-            if (rb != null)
+            if (Input.GetMouseButtonDown(0))
             {
                 rb.gravityScale = -1;
                 rb.velocity = Vector2.zero;
+            }
+        }
+        catch (System.NullReferenceException e)
+        {
+            Debug.LogError($"Planet reference error: {e.Message}");
+            currentPlanet = null;
+        }
+        catch (System.MissingComponentException e)
+        {
+            Debug.LogError($"Component error: {e.Message}");
+            if (currentPlanet != null)
+            {
+                Destroy(currentPlanet);
+                currentPlanet = null;
+            }
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Unexpected error in planet update: {e.Message}");
+            if (currentPlanet != null)
+            {
+                Destroy(currentPlanet);
+                currentPlanet = null;
             }
         }
     }
