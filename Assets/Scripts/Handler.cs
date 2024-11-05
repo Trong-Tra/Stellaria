@@ -7,7 +7,9 @@ public class Handler : MonoBehaviour
 {
     private GameManager gameManager;
     public GameObject currentPlanet;
+    public bool canSpawn = true;
     private bool hasPlanet = false;
+    private bool isSpawning = false;
     
     void Start()
     {
@@ -19,6 +21,10 @@ public class Handler : MonoBehaviour
 
     public void SpawnNewPlanet()
     {
+        if(gameManager.gameOver || !canSpawn || currentPlanet != null || isSpawning){
+            return;
+        }
+
         int randomPlanet = Random.Range(0, 5);
         currentPlanet = gameManager.CreatePlanet(this.transform.position, randomPlanet);
 
