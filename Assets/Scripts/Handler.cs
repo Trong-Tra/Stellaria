@@ -21,6 +21,26 @@ public class Handler : MonoBehaviour
         currentPlanet.GetComponent<Rigidbody2D>().gravityScale = 0;
     }
 
+    public void ReadyForNewPlanet()
+    {
+        Debug.Log("ReadyForNewPlanet called");
+        if (!isSpawning)
+        {
+            StartCoroutine(SpawnWithDelay());
+        }
+    }
+
+    private IEnumerator SpawnWithDelay()
+    {
+        currentPlanet = null;
+        canSpawn = false; 
+
+        yield return new WaitForSeconds(spawnDelay);
+
+        canSpawn = true;
+        SpawnNewPlanet();
+    }
+
     public void SpawnNewPlanet()
     {
         if(gameManager.gameOver || !canSpawn || currentPlanet != null || isSpawning){
