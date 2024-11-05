@@ -8,10 +8,10 @@ public class Handler : MonoBehaviour
     public bool canSpawn = true;
     private bool isSpawning = false;
     public float spawnY = -4f;
-    public float spawnDelay = 0.5f; 
+    public float spawnDelay = 0.5f;
 
     void Start()
-    {       
+    {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         Debug.Log("Handler initialized");
         SpawnNewPlanet();
@@ -41,7 +41,6 @@ public class Handler : MonoBehaviour
     {
         if (gameManager.gameOver || !canSpawn || currentPlanet != null || isSpawning)
         {
-            Debug.Log($"Spawn prevented - GameOver: {gameManager.gameOver}, CanSpawn: {canSpawn}, HasCurrentPlanet: {currentPlanet != null}, IsSpawning: {isSpawning}");
             return;
         }
 
@@ -85,7 +84,7 @@ public class Handler : MonoBehaviour
         if (gameManager.gameOver) return;
         HandleMouseMovement();
         HandlePlanetPosition();
-        HandlePlanetRelease();  
+        HandlePlanetRelease();
     }
 
     private void HandleMouseMovement()

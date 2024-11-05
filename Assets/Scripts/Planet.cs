@@ -7,7 +7,9 @@ public class Planet : MonoBehaviour
     private GameManager gameManager;
     public Handler handler;
     private bool hasCollided = false;
-    public bool isTouchingTrigger = false;
+    private static int triggerCounter = 0;  
+    private bool isCheckingGameOver = false;
+
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -21,17 +23,23 @@ public class Planet : MonoBehaviour
         Destroy(planet2);
     }
 
-    IEnumerator WaitForEndGame()
+    IEnumerator CheckGameOver()
     {
-        yield return new WaitForSeconds(5f);
-        if(isTouchingTrigger == true)
+        isCheckingGameOver = true;
+        yield return new WaitForSeconds(0.7f);
+
+        if (triggerCounter > 0)
         {
             gameManager.endGame();
+            Debug.LogError("Game Over");
         }
+
+        isCheckingGameOver = false;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        // Handle planet spawning logic
         if (GetComponent<Rigidbody2D>().gravityScale != 0 && !hasCollided)
         {
             hasCollided = true;
@@ -44,21 +52,32 @@ public class Planet : MonoBehaviour
                 Debug.LogError("Handler reference is null!");
             }
         }
-    }
 
-    void OnTriggerStay2D(Collider2D collision)
-    {
-        if (!isTouchingTrigger)
+        // Increment counter and start game over check
+        triggerCounter++;
+        Debug.Log($"Trigger Enter - Counter: {triggerCounter}");
+
+        if (!isCheckingGameOver)
         {
-            isTouchingTrigger = true;
-            StartCoroutine(WaitForEndGame());
+            StartCoroutine(CheckGameOver());
         }
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
-       isTouchingTrigger = false;
-       StopAllCoroutines();
+        // Decrease counter but ensure it never goes below 0
+        triggerCounter = Mathf.Max(0, triggerCounter - 1);
+        Debug.Log($"Trigger Exit - Counter: {triggerCounter}");
+    }
+
+    private void OnDestroy()
+    {
+        // Ensure counter is decreased when planet is destroyed while in trigger
+        if (isCheckingGameOver)
+        {
+            triggerCounter = Mathf.Max(0, triggerCounter - 1);
+            Debug.Log($"Planet Destroyed - Counter: {triggerCounter}");
+        }
     }
 
     /**
@@ -68,10 +87,10 @@ public class Planet : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Planet otherPlanet = collision.gameObject.GetComponent<Planet>();
-        if (otherPlanet != null && 
-            otherPlanet.id == this.id && 
+        if (otherPlanet != null &&
+            otherPlanet.id == this.id &&
             !gameManager.gameOver &&
-            this.gameObject.GetInstanceID() < collision.gameObject.GetInstanceID()) 
+            this.gameObject.GetInstanceID() < collision.gameObject.GetInstanceID())
         {
             Vector3 midPoint = (transform.position + collision.transform.position) / 2f;
             GameObject newPlanet = gameManager.CreatePlanet(midPoint, this.id + 1);
