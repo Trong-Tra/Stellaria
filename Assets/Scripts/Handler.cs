@@ -36,16 +36,43 @@ public class Handler : MonoBehaviour
 
         try
         {
+            if (currentPlanet == null)
+            {
+                throw new System.NullReferenceException("Failed to spawn planet");
+            }
+
             Rigidbody2D rb = currentPlanet.GetComponent<Rigidbody2D>();
 
+            if (rb == null)
+            {
+                throw new System.MissingComponentException("Rigidbody2D not found on spawned planet");
+            }
+    
             rb.gravityScale = 0;
             rb.velocity = Vector2.zero;
             rb.angularVelocity = 0f;
             canSpawn = false;
             Debug.Log("New planet spawned successfully");
         }
-        catch (Exception e){
+        catch (System.NullReferenceException e)
+        {
             Debug.LogError(e.Message);
+            currentPlanet = null;
+        }
+        catch (System.MissingComponentException e)
+        {
+            Debug.LogError(e.Message);
+            Destroy(currentPlanet);
+            currentPlanet = null;
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Unexpected error while spawning planet: {e.Message}");
+            if (currentPlanet != null)
+            {
+                Destroy(currentPlanet);
+                currentPlanet = null;
+            }
         }
     }
 
