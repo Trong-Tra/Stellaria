@@ -1,53 +1,129 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR;
+using System.Collections;
 
 public class Handler : MonoBehaviour
 {
     private GameManager gameManager;
     public GameObject currentPlanet;
-    private bool hasPlanet = false;
-    
-    void Start()
-    {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    public bool canSpawn = true;
+    private bool isSpawning = false;
+    public float spawnY = -4f;
+    public float spawnDelay = 0.5f; 
 
-        currentPlanet = gameManager.CreatePlanet(this.transform.position, 0);
-        currentPlanet.GetComponent<Rigidbody2D>().gravityScale = 0;
+    void Start()
+    {       
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        Debug.Log("Handler initialized");
+        SpawnNewPlanet();
+    }
+
+    public void ReadyForNewPlanet()
+    {
+        Debug.Log("ReadyForNewPlanet called");
+        if (!isSpawning)
+        {
+            StartCoroutine(SpawnWithDelay());
+        }
+    }
+
+    private IEnumerator SpawnWithDelay()
+    {
+        currentPlanet = null;
+        canSpawn = false; // Prevent spawning during delay
+
+        yield return new WaitForSeconds(spawnDelay);
+
+        canSpawn = true;
+        SpawnNewPlanet();
     }
 
     public void SpawnNewPlanet()
     {
-        int randomPlanet = Random.Range(0, 5);
-        currentPlanet = gameManager.CreatePlanet(this.transform.position, randomPlanet);
+        if (gameManager.gameOver || !canSpawn || currentPlanet != null || isSpawning)
+        {
+            Debug.Log($"Spawn prevented - GameOver: {gameManager.gameOver}, CanSpawn: {canSpawn}, HasCurrentPlanet: {currentPlanet != null}, IsSpawning: {isSpawning}");
+            return;
+        }
 
-        currentPlanet.GetComponent<Rigidbody2D>().gravityScale = 0;
+        isSpawning = true;
+        Debug.Log("Spawning new planet");
+
+        // Set spawn position
+        Vector3 spawnPosition = new Vector3(transform.position.x, spawnY, 0);
+
+        int randomPlanet = Random.Range(0, 5);
+        currentPlanet = gameManager.CreatePlanet(spawnPosition, randomPlanet);
+
+        if (currentPlanet != null)
+        {
+            Rigidbody2D rb = currentPlanet.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.gravityScale = 0;
+                rb.velocity = Vector2.zero;
+                rb.angularVelocity = 0f;
+                canSpawn = false;
+                Debug.Log("New planet spawned successfully");
+            }
+            else
+            {
+                Debug.LogError("Rigidbody2D not found on spawned planet");
+                Destroy(currentPlanet);
+                currentPlanet = null;
+            }
+        }
+        else
+        {
+            Debug.LogError("Failed to spawn planet");
+        }
+
+        isSpawning = false;
     }
 
     private void Update()
     {
-        /**
-         * @dev this is temporary solution and var
-         * @todo design game and fix var
-         * @todo developing new handler logic
-         */
+        if (gameManager.gameOver) return;
+        HandleMouseMovement();
+        HandlePlanetPosition();
+        HandlePlanetRelease();  
+    }
+
+    private void HandleMouseMovement()
+    {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if (!gameManager.gameOver && mousePosition.x < 2f && mousePosition.x > -2f)
+        if (mousePosition.x < 2f && mousePosition.x > -2f)
         {
             mousePosition.z = 0;
-            mousePosition.y = 0;
+            mousePosition.y = transform.position.y;
             transform.position = mousePosition;
         }
+    }
 
-        if (currentPlanet != null && currentPlanet.GetComponent<Rigidbody2D>().gravityScale == 0)
+    private void HandlePlanetPosition()
+    {
+        if (currentPlanet != null)
         {
-            currentPlanet.transform.position = this.transform.position;
+            Rigidbody2D rb = currentPlanet.GetComponent<Rigidbody2D>();
+            if (rb != null && rb.gravityScale == 0)
+            {
+                Vector3 newPosition = transform.position;
+                newPosition.y = spawnY;
+                currentPlanet.transform.position = newPosition;
+            }
         }
+    }
 
-        if (!gameManager.gameOver && Input.GetMouseButton(0))
+    private void HandlePlanetRelease()
+    {
+        if (Input.GetMouseButtonDown(0) && currentPlanet != null)
         {
-            currentPlanet.GetComponent<Rigidbody2D>().gravityScale = -1;
+            Debug.Log("Releasing planet");
+            Rigidbody2D rb = currentPlanet.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.gravityScale = -1;
+                rb.velocity = Vector2.zero;
+            }
         }
     }
 }
