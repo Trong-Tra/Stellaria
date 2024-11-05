@@ -94,9 +94,15 @@ public class Handler : MonoBehaviour
             transform.position = mousePosition;
         }
 
-        if (currentPlanet != null && currentPlanet.GetComponent<Rigidbody2D>().gravityScale == 0)
+        if (currentPlanet != null)
         {
-            currentPlanet.transform.position = this.transform.position;
+            Rigidbody2D rb = currentPlanet.GetComponent<Rigidbody2D>();
+            if (rb != null && rb.gravityScale == 0)
+            {
+                Vector3 newPosition = transform.position;
+                newPosition.y = spawnY;
+                currentPlanet.transform.position = newPosition;
+            }
         }
 
         if (!gameManager.gameOver && Input.GetMouseButton(0))
