@@ -86,11 +86,11 @@ public class Handler : MonoBehaviour
         if (gameManager.gameOver) { return; }
 
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        
-        if (!gameManager.gameOver && mousePosition.x < 2f && mousePosition.x > -2f)
+
+        if (mousePosition.x < 2f && mousePosition.x > -2f)
         {
             mousePosition.z = 0;
-            mousePosition.y = 0;
+            mousePosition.y = transform.position.y;
             transform.position = mousePosition;
         }
 
