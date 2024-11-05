@@ -25,10 +25,28 @@ public class Handler : MonoBehaviour
             return;
         }
 
+        isSpawning = true;
+
+        Vector3 spawnPosition = new Vector3(transform.position.x, spawnY, 0);
+
         int randomPlanet = Random.Range(0, 5);
         currentPlanet = gameManager.CreatePlanet(this.transform.position, randomPlanet);
 
         currentPlanet.GetComponent<Rigidbody2D>().gravityScale = 0;
+
+        try
+        {
+            Rigidbody2D rb = currentPlanet.GetComponent<Rigidbody2D>();
+
+            rb.gravityScale = 0;
+            rb.velocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+            canSpawn = false;
+            Debug.Log("New planet spawned successfully");
+        }
+        catch (Exception e){
+            Debug.LogError(e.Message);
+        }
     }
 
     private void Update()
