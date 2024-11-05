@@ -19,11 +19,11 @@ public class GameManager : MonoBehaviour
         GameObject combinedPlanet = Instantiate(planetPrefabs[id], position, Quaternion.identity);
         combinedPlanet.GetComponent<Planet>().id = id;
         return combinedPlanet;
-    } 
+    }
 
     public void addScore(int id)
     {
-        switch(id)
+        switch (id)
         {
             case 0:
                 score += 1;

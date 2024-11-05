@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class Handler : MonoBehaviour
+public class MockHandler : MonoBehaviour
 {
     private GameManager gameManager;
     public GameObject currentPlanet;
@@ -50,7 +50,7 @@ public class Handler : MonoBehaviour
         // Set spawn position
         Vector3 spawnPosition = new Vector3(transform.position.x, spawnY, 0);
 
-        int randomPlanet = Random.Range(0, 5);
+        int randomPlanet = 9;
         currentPlanet = gameManager.CreatePlanet(spawnPosition, randomPlanet);
 
         if (currentPlanet != null)
