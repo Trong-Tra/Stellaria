@@ -10,6 +10,8 @@ public class Handler : MonoBehaviour
     public bool canSpawn = true;
     private bool hasPlanet = false;
     private bool isSpawning = false;
+    public float spawnY = -4f;
+    public float spawnDelay = 0.5f;
     
     void Start()
     {
