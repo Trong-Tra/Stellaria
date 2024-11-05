@@ -105,9 +105,15 @@ public class Handler : MonoBehaviour
             }
         }
 
-        if (!gameManager.gameOver && Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0) && currentPlanet != null)
         {
-            currentPlanet.GetComponent<Rigidbody2D>().gravityScale = -1;
+            Debug.Log("Releasing planet");
+            Rigidbody2D rb = currentPlanet.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.gravityScale = -1;
+                rb.velocity = Vector2.zero;
+            }
         }
     }
 }
