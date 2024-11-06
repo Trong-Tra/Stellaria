@@ -13,7 +13,7 @@ public class MockPlanet : MonoBehaviour
 	void Start()
 	{
 		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-		handler = GameObject.Find("MockHandler").GetComponent<Handler>();
+		handler = GameObject.Find("MockHandler").GetComponent<MockHandler>();
 	}
 
 	IEnumerator DestroyPlanets(GameObject planet1, GameObject planet2)
