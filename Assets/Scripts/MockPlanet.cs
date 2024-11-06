@@ -5,7 +5,8 @@ public class MockPlanet : MonoBehaviour
 {
 	public int id;
 	private GameManager gameManager;
-	public MockHandler handler;
+    public GameManager gameOverLogic;
+    public MockHandler handler;
 	private bool hasCollided = false;
 	private static int triggerCounter = 0;
 	private bool isCheckingGameOver = false;
@@ -14,7 +15,8 @@ public class MockPlanet : MonoBehaviour
 	{
 		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		handler = GameObject.Find("MockHandler").GetComponent<MockHandler>();
-	}
+        gameOverLogic = GameObject.FindGameObjectWithTag("GameOverLogic").GetComponent<GameManager>();
+    }
 
 	IEnumerator DestroyPlanets(GameObject planet1, GameObject planet2)
 	{
