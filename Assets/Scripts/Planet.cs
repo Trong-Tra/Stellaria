@@ -5,6 +5,7 @@ public class Planet : MonoBehaviour
 {
     public int id;
     private GameManager gameManager;
+    public GameManager gameOverLogic;
     public Handler handler;
     private bool hasCollided = false;
     private static int triggerCounter = 0;  
@@ -14,6 +15,7 @@ public class Planet : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         handler = GameObject.Find("Handler").GetComponent<Handler>();
+        gameOverLogic = GameObject.FindGameObjectWithTag("GameOverLogic").GetComponent<GameManager>();
     }
 
     IEnumerator DestroyPlanets(GameObject planet1, GameObject planet2)
@@ -30,7 +32,7 @@ public class Planet : MonoBehaviour
 
         if (triggerCounter > 0)
         {
-            gameManager.endGame();
+            gameOverLogic.endGame();
             Debug.LogError("Game Over");
         }
 
