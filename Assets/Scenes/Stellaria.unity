@@ -1425,7 +1425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentPlanet: {fileID: 0}
   canSpawn: 1
-  spawnY: -4
+  spawnY: -5
   spawnDelay: 0.5
 --- !u!212 &1078456395
 SpriteRenderer:
