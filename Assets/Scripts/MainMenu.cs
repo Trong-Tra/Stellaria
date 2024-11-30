@@ -7,7 +7,12 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScenceAsync(1);
+        SceneManager.LoadSceneAsync(1);
+    }
+
+    public void CheatMode()
+    {
+        SceneManager.LoadSceneAsync(2);
     }
 
     public void QuitGame()
