@@ -41,6 +41,7 @@ public class Handler : MonoBehaviour
     {
         if (gameManager.gameOver || !canSpawn || currentPlanet != null || isSpawning)
         {
+            Debug.Log("Can not spawn new planet");
             return;
         }
 
@@ -50,7 +51,12 @@ public class Handler : MonoBehaviour
         // Set spawn position
         Vector3 spawnPosition = new Vector3(transform.position.x, spawnY, 0);
 
-        int randomPlanet = Random.Range(0, 5);
+        int randomPlanet;
+        if (gameManager.isCheatMode) {
+            randomPlanet = 9;
+        } else {
+            randomPlanet = Random.Range(0, 5);
+        }
         currentPlanet = gameManager.CreatePlanet(spawnPosition, randomPlanet);
 
         if (currentPlanet != null)
