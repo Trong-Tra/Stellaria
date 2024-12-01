@@ -13,11 +13,13 @@ public class GameManager : MonoBehaviour
     public GameObject playAgainButton;
     public GameObject scoreTextObj;
     public bool gameOver = false;
+    public bool isCheatMode = false;
 
     public GameObject CreatePlanet(Vector3 position, int id)
     {
         GameObject combinedPlanet = Instantiate(planetPrefabs[id], position, Quaternion.identity);
         combinedPlanet.GetComponent<Planet>().id = id;
+        
         return combinedPlanet;
     }
 
