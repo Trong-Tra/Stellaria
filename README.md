@@ -1,5 +1,9 @@
 # Stellaria  
 
+<p align="center">
+    <img src="Assets/Images/Icons/5_Earth.png" alt="Stellaria Logo" width="200"/>
+</p>
+
 <h3 align="center">MSIS2433 Final Project</h3>  
 <p align="center" style="font-size: 18px; color: #555;">  
 Where cosmic imagination meets strategy – grow your planetary system by merging planets in this relaxing yet challenging game.  
@@ -58,7 +62,7 @@ The game offers an immersive space-themed environment with intuitive mechanics t
 ## Contributors 🎮  
 1. **[Tra Minh Trong](https://github.com/Trong-Tra)**  
     - **Role**: Script Programmer, Object Architecture, and Project Management.
-    - **Responsibilities**: Core mechanics development, physics optimization, and collision handling.  
+    - **Responsibilities**: Core mechanics development, physics optimization, collision handling and manage project workflow.
 
 1. **[Pham Gia Minh](https://github.com/Orstedz)**  
     - **Role**: Game Developer, Game Designer, and Sound Designer.
