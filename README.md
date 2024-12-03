@@ -49,11 +49,12 @@ The game offers an immersive space-themed environment with intuitive mechanics t
 
 ## Tech Stack 💻  
 <div align="center">
-    <img src="https://skillicons.dev/icons?i=git,github,cs,unity,vscode,visualstudio" alt="Tech stack icons"/> <br>
+    <img src="https://skillicons.dev/icons?i=git,github,cs,dotnet,unity,vscode,visualstudio" alt="Tech stack icons"/> <br>
 </div>
 
 - **Unity**: The primary engine for game development, enabling physics and rendering.  
-- **C#**: For scripting and game logic.  
+- **C#**: For scripting and game logic.
+- **ASP.NET**: Provides the runtime environment for executing C# scripts in Unity.
 - **Git & GitHub**: Version control and collaborative development.  
 - **VSCode & Visual Studio**: Integrated development environment for scripting and debugging.  
 
