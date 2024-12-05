@@ -81,7 +81,7 @@ Either download from release section (or click on the link below) or get the sou
 ## Check Out Our Demo Video 
 <p align="center">
   <a href="https://youtu.be/Xnhn7bcVp1Q">
-        <img https://img.youtube.com/vi/Xnhn7bcVp1Q/0.jpg alt="Watch the video">
+        <img src="https://img.youtube.com/vi/Xnhn7bcVp1Q/0.jpg" alt="Watch the video">
     </a>
 </p>
 ---
