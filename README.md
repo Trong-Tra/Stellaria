@@ -61,6 +61,12 @@ The game offers an immersive space-themed environment with intuitive mechanics t
 
 ---
 
+Try out the game yourself! 
+Either download from release section (or click on the link below) or get the source code and try it from the GameInstaller directory!!
+[Stellaria](https://github.com/Trong-Tra/Stellaria/releases/tag/Ver) and experience the thrill of merging planets in a vast, dynamic galaxy!
+
+---
+
 ## Contributors 🎮  
 1. **[Tra Minh Trong](https://github.com/Trong-Tra)**  
     - **Role**: Script Programmer, Object Architecture, and Project Management.
