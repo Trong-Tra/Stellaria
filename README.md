@@ -49,21 +49,22 @@ The game offers an immersive space-themed environment with intuitive mechanics t
 
 ## Tech Stack 💻  
 <div align="center">
-    <img src="https://skillicons.dev/icons?i=git,github,cs,dotnet,unity,vscode,visualstudio" alt="Tech stack icons"/> <br>
+    <img src="https://skillicons.dev/icons?i=git,github,cs,dotnet,unity,vscode,visualstudio,figma" alt="Tech stack icons"/> <br>
 </div>
 
 - **Unity**: The primary engine for game development, enabling physics and rendering.  
 - **C#**: For scripting and game logic.
 - **ASP.NET**: Provides the runtime environment for executing C# scripts in Unity.
 - **Git & GitHub**: Version control and collaborative development.  
-- **VSCode & Visual Studio**: Integrated development environment for scripting and debugging.  
+- **VSCode & Visual Studio**: Integrated development environment for scripting and debugging.
+- **Figma**: For designing and prototyping the game's UI and art assets. Design project class structure 
 
 ---
 
 ## Contributors 🎮  
 1. **[Tra Minh Trong](https://github.com/Trong-Tra)**  
     - **Role**: Script Programmer, Object Architecture, and Project Management.
-    - **Responsibilities**: Core mechanics development, physics optimization, collision handling and manage project workflow.
+    - **Responsibilities**: Core mechanics development, physics optimization, collision handling, manage project workflow and version control.
 
 1. **[Pham Gia Minh](https://github.com/Orstedz)**  
     - **Role**: Game Developer, Game Designer, and Sound Designer.
