@@ -57,7 +57,7 @@ The game offers an immersive space-themed environment with intuitive mechanics t
 - **ASP.NET**: Provides the runtime environment for executing C# scripts in Unity.
 - **Git & GitHub**: Version control and collaborative development.  
 - **VSCode & Visual Studio**: Integrated development environment for scripting and debugging.
-- **Figma**: For designing and prototyping the game's UI and art assets. Design project class structure 
+- **Figma**: For designing and prototyping the game's UI and art assets. Design project class structure.
 
 ---
 
@@ -69,5 +69,10 @@ The game offers an immersive space-themed environment with intuitive mechanics t
 1. **[Pham Gia Minh](https://github.com/Orstedz)**  
     - **Role**: Game Developer, Game Designer, and Sound Designer.
     - **Responsibilities**: Game concept, visual design, and asset creation.
+
+---
+
+## Check Out Our Demo Video  
+[![Watch the video](https://img.youtube.com/vi/Xnhn7bcVp1Q/0.jpg)](https://youtu.be/Xnhn7bcVp1Q) 
 
 ---
