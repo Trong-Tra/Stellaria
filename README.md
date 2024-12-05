@@ -68,6 +68,6 @@ The game offers an immersive space-themed environment with intuitive mechanics t
 
 1. **[Pham Gia Minh](https://github.com/Orstedz)**  
     - **Role**: Game Developer, Game Designer, and Sound Designer.
-    - **Responsibilities**: Game concept, visual design, and asset creation.  
+    - **Responsibilities**: Game concept, visual design, and asset creation.
 
 ---
